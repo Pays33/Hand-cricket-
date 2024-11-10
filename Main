@@ -1,0 +1,82 @@
+from random import randint
+from time import sleep
+
+print("Hand cricket\n")
+
+p1 = 0
+p2 = 0
+b = 0
+round = 1
+rounds = int(input('enter no of rounds: '))
+
+choose = input('enter first to batting: ')
+if choose == 'p1':
+    b += 0
+elif choose == 'p2':
+    b += 1
+else:
+        print('invalid input default set to p1')
+
+print(f'player', ' ' * 22,'guesses',' ' * 11,'total points')
+while True:
+    g1 = randint(1,8)
+    g2 = randint(1,8)
+    print(f'player 1:{g1:>25}{p1:>35}\nplayer 2:{g2:>25}{p2:>35}\n')
+    sleep(2)
+    if g1 == g2 and round == rounds:
+        print('Results','\n','player 1:',p1,' \n','player 2:',p2)
+        if p1 > p2:
+            print('player 1 wins')
+        elif p2 > p1:
+            print('player 2 wins')
+        else:
+            print('draw')
+        break
+    else:
+        if g1 == g2 and round != rounds:
+            round += 1
+            print('wicket,switched batter,round: ',round)
+            b = abs(b - 1)
+            continue
+        else:
+            pass
+    if b == 0:
+        match g1:
+            case 1:
+                p1 += 1
+            case 2:
+                p1 += 2
+            case 3:
+                p1 += 3
+            case 4:
+                p1 += 4
+            case 5:
+                p1 += 5
+            case 6:
+                p1 += 6
+            case 7:
+                p1 += 10
+            case 8:
+                p1 += 20
+            case _:
+                pass
+    else:
+            match g2:
+                case 1:
+                    p2 += 1
+                case 2:
+                    p2 += 2
+                case 3:
+                    p2 += 3
+                case 4:
+                    p2 += 4
+                case 5:
+                    p2 += 5
+                case 6:
+                    p2 += 6
+                case 7:
+                    p2 += 10
+                case 8:
+                    p2 += 20
+                case _:
+                    pass
